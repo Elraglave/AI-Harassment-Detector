@@ -1,0 +1,413 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-*: initial;
+  --font-inter: Inter, sans-serif;
+
+  --color-current: currentColor;
+  --color-transparent: transparent;
+  --color-stroke: #eeeeee;
+  --color-strokedark: #2d2f40;
+  --color-hoverdark: #252a42;
+  --color-titlebg: #adfff8;
+  --color-titlebg2: #ffeac2;
+  --color-titlebgdark: #46495a;
+  --color-btndark: #292e45;
+  --color-white: #ffffff;
+  --color-black: #181c31;
+  --color-blackho: #2c3149;
+  --color-blacksection: #1c2136;
+  --color-primary: #006bff;
+  --color-primaryho: #0063ec;
+  --color-meta: #20c5a8;
+  --color-waterloo: #757693;
+  --color-manatee: #999aa1;
+  --color-alabaster: #fbfbfb;
+  --color-zumthor: #edf5ff;
+  --color-socialicon: #d1d8e0;
+
+  --text-metatitle: 12px, 20px;
+  --text-sectiontitle: 14px, 22px;
+  --text-regular: 16px, 26px;
+  --text-metatitle3: 18px, 26px;
+  --text-metatitle2: 20px, 32px;
+  --text-para2: 22px, 35px;
+  --text-itemtitle: 26px, 32px;
+  --text-itemtitle2: 24px, 32px;
+  --text-hero: 44px, 58px;
+  --text-sectiontitle3: 44px, 55px;
+  --text-sectiontitle2: 40px, 52px;
+  --text-sectiontitle4: 34px, 48px;
+
+  --container-c-1390: 86.875rem;
+  --container-c-1315: 82.188rem;
+  --container-c-1280: 80rem;
+  --container-c-1235: 77.188rem;
+  --container-c-1154: 72.125rem;
+  --container-c-1016: 63.5rem;
+
+  --z-index-1: 1;
+  --z-index-999: 999;
+  --z-index-99999: 99999;
+
+  --transition-property-width: width;
+
+  --shadow-solid-l: 0px 10px 120px 0px rgba(45, 74, 170, 0.1);
+  --shadow-solid-2: 0px 2px 10px rgba(122, 135, 167, 0.05);
+  --shadow-solid-3: 0px 6px 90px rgba(8, 14, 40, 0.04);
+  --shadow-solid-4: 0px 6px 90px rgba(8, 14, 40, 0.1);
+  --shadow-solid-5: 0px 8px 24px rgba(45, 74, 170, 0.08);
+  --shadow-solid-6: 0px 8px 24px rgba(10, 16, 35, 0.08);
+  --shadow-solid-7: 0px 30px 50px rgba(45, 74, 170, 0.1);
+  --shadow-solid-8: 0px 12px 120px rgba(45, 74, 170, 0.06);
+  --shadow-solid-9: 0px 12px 30px rgba(45, 74, 170, 0.06);
+  --shadow-solid-10: 0px 8px 30px rgba(45, 74, 170, 0.06);
+  --shadow-solid-11: 0px 6px 20px rgba(45, 74, 170, 0.05);
+  --shadow-solid-12: 0px 2px 10px rgba(0, 0, 0, 0.05);
+  --shadow-solid-13: 0px 2px 19px rgba(0, 0, 0, 0.05);
+
+  --animate-line1: line 3s linear infinite;
+  --animate-line2: line 6s linear infinite;
+  --animate-line3: line 9s linear infinite;
+
+  @keyframes line {
+    0%,
+    100% {
+      transform: translateY(100%);
+    }
+    50% {
+      transform: translateY(0);
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+body {
+  font-family: var(--font-inter);
+  color: var(--color-black);
+  background-color: var(--color-white);
+}
+
+/* Dark mode support */
+.dark body {
+  color: var(--color-white);
+  background-color: var(--color-black);
+}
+
+/* Professional button styles */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-weight: 500;
+  padding: 0.625rem 1.875rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primaryho);
+}
+
+.btn-secondary {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border: 1px solid var(--color-stroke);
+  font-weight: 500;
+  padding: 0.625rem 1.875rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-zumthor);
+}
+
+.dark .btn-secondary {
+  background-color: var(--color-blacksection);
+  color: var(--color-white);
+  border-color: var(--color-strokedark);
+}
+
+.dark .btn-secondary:hover {
+  background-color: var(--color-blacksection);
+}
+
+/* Government card styles */
+.gov-card {
+  background-color: var(--color-white);
+  border-radius: 0.125rem;
+  box-shadow: var(--shadow-solid-8);
+  padding: 2rem;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.gov-card:hover {
+  box-shadow: var(--shadow-solid-9);
+}
+
+.dark .gov-card {
+  background-color: var(--color-blacksection);
+  box-shadow: var(--shadow-solid-2);
+}
+
+.gov-card-header {
+  border-bottom: 1px solid var(--color-stroke);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.dark .gov-card-header {
+  border-color: var(--color-strokedark);
+}
+
+.gov-card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-black);
+}
+
+.dark .gov-card-title {
+  color: var(--color-white);
+}
+
+/* Professional typography */
+.text-official {
+  color: var(--color-black);
+  font-weight: 500;
+}
+
+.dark .text-official {
+  color: var(--color-white);
+}
+
+.text-muted {
+  color: var(--color-waterloo);
+  font-size: var(--text-para2);
+}
+
+.dark .text-muted {
+  color: var(--color-manatee);
+}
+
+.text-small {
+  font-size: var(--text-metatitle);
+  color: var(--color-waterloo);
+}
+
+.dark .text-small {
+  color: var(--color-manatee);
+}
+
+/* Status indicators */
+.status-success {
+  background-color: rgba(32, 197, 168, 0.1);
+  color: var(--color-meta);
+  border: 1px solid rgba(32, 197, 168, 0.2);
+}
+
+.status-warning {
+  background-color: rgba(255, 234, 194, 0.2);
+  color: var(--color-titlebg2);
+  border: 1px solid rgba(255, 234, 194, 0.3);
+}
+
+.status-error {
+  background-color: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.status-info {
+  background-color: var(--color-zumthor);
+  color: var(--color-primary);
+  border: 1px solid rgba(0, 107, 255, 0.2);
+}
+
+/* Audio visualization styles */
+.audio-visualizer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.audio-bar {
+  width: 3px;
+  background: linear-gradient(to top, var(--color-primary), var(--color-primaryho));
+  border-radius: 2px;
+  animation: audioWave 1s ease-in-out infinite alternate;
+}
+
+@keyframes audioWave {
+  0% { height: 10px; }
+  100% { height: 30px; }
+}
+
+/* Professional focus states */
+.focus-ring:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* Government color palette */
+.gov-blue {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.gov-blue-light {
+  background-color: var(--color-zumthor);
+  color: var(--color-primary);
+  border: 1px solid rgba(0, 107, 255, 0.2);
+}
+
+.gov-green {
+  background-color: var(--color-meta);
+  color: var(--color-white);
+}
+
+.gov-green-light {
+  background-color: rgba(32, 197, 168, 0.1);
+  color: var(--color-meta);
+  border: 1px solid rgba(32, 197, 168, 0.2);
+}
+
+.gov-red {
+  background-color: #dc2626;
+  color: var(--color-white);
+}
+
+.gov-red-light {
+  background-color: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.gov-yellow {
+  background-color: var(--color-titlebg2);
+  color: var(--color-black);
+}
+
+.gov-yellow-light {
+  background-color: rgba(255, 234, 194, 0.2);
+  color: var(--color-titlebg2);
+  border: 1px solid rgba(255, 234, 194, 0.3);
+}
+
+/* Animation classes */
+.animate_top {
+  animation: top 0.5s ease-in-out;
+}
+
+@keyframes top {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive utilities */
+@media (max-width: 1280px) {
+  .navbar {
+    padding: 0 20px;
+  }
+}
+
+/* Component-specific styles */
+.blog-details-docs {
+  max-width: 800px;
+}
+
+.blog-details p {
+  margin-bottom: 20px;
+}
+
+.blog-details p strong {
+  color: var(--color-black);
+}
+
+.blog-details h3 strong,
+.blog-details h4 strong,
+.blog-details h5 strong {
+  color: var(--color-black);
+}
+
+.blog-details h1 {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.blog-details h2 strong,
+.blog-details h3 strong {
+  color: var(--color-black);
+}
+
+.blog-details ul,
+.blog-details ol {
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+
+.blog-details li,
+.blog-details ol li {
+  margin-bottom: 10px;
+  color: var(--color-waterloo);
+}
+
+.blog-details blockquote {
+  border-left: 4px solid var(--color-primary);
+  padding-left: 20px;
+  margin: 20px 0;
+  font-style: italic;
+}
+
+.blog-details blockquote::after,
+.blog-details blockquote::before {
+  content: '"';
+  font-size: 24px;
+  color: var(--color-primary);
+}
+
+pre {
+  background: var(--color-blacksection);
+  padding: 20px;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+.prism-copy-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.active-tab {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+} 
